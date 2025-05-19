@@ -1,0 +1,135 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 260 30% 98%;
+    --foreground: 260 10% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 260 10% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 260 10% 10%;
+
+    --primary: 260 70% 55%;
+    --primary-foreground: 260 10% 98%;
+
+    --secondary: 185 95% 50%;
+    --secondary-foreground: 185 10% 98%;
+
+    --accent: 185 95% 50%;
+    --accent-foreground: 185 10% 98%;
+
+    --muted: 260 20% 96%;
+    --muted-foreground: 260 10% 40%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 260 20% 88%;
+    --input: 260 20% 88%;
+    --ring: 185 95% 50%;
+
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 230 20% 10%;
+    --foreground: 230 10% 90%;
+
+    --card: 230 15% 15%;
+    --card-foreground: 230 10% 90%;
+
+    --popover: 230 15% 15%;
+    --popover-foreground: 230 10% 90%;
+
+    --primary: 230 15% 20%;
+    --primary-foreground: 230 10% 98%;
+
+    --secondary: 185 95% 50%;
+    --secondary-foreground: 185 10% 98%;
+
+    --accent: 185 95% 50%;
+    --accent-foreground: 185 10% 98%;
+
+    --muted: 230 15% 20%;
+    --muted-foreground: 230 10% 70%;
+
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 230 15% 25%;
+    --input: 230 15% 25%;
+    --ring: 185 95% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground transition-colors duration-300;
+  }
+}
+
+/* Custom animations */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.float-animation {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Paper texture */
+.paper-texture {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+}
+
+.dark .paper-texture {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+}
+
+/* Glow effects */
+.text-glow {
+  text-shadow: 0 0 10px rgba(34, 211, 238, 0.7), 0 0 20px rgba(34, 211, 238, 0.5);
+}
+
+.border-glow {
+  box-shadow: 0 0 10px rgba(34, 211, 238, 0.5), 0 0 20px rgba(34, 211, 238, 0.3);
+  border-color: rgba(34, 211, 238, 0.7);
+}
+
+.dark .text-glow {
+  text-shadow: 0 0 10px rgba(34, 211, 238, 0.7), 0 0 20px rgba(34, 211, 238, 0.5), 0 0 30px rgba(34, 211, 238, 0.3);
+}
+
+.dark .border-glow {
+  box-shadow: 0 0 10px rgba(34, 211, 238, 0.5), 0 0 20px rgba(34, 211, 238, 0.3), 0 0 30px rgba(34, 211, 238, 0.2);
+  border-color: rgba(34, 211, 238, 0.7);
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  [data-device="mobile"] .paper-character-container {
+    transform: scale(0.8);
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1023px) {
+  [data-device="tablet"] .paper-character-container {
+    transform: scale(0.9);
+  }
+}
